@@ -4,5 +4,7 @@
   "initialVersions": {
     "@wunderwerk/easy-server-actions": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "stale-days-hide"
+  ]
 }
