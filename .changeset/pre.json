@@ -5,6 +5,7 @@
     "@wunderwerk/easy-server-actions": "0.0.0"
   },
   "changesets": [
-    "stale-days-hide"
+    "stale-days-hide",
+    "thick-pants-flash"
   ]
 }
