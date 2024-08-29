@@ -32,7 +32,7 @@ export function useServerActionQuery<
   action: (input: TInput) => TResult | Promise<TResult>,
   options: Omit<UndefinedInitialDataOptions<ExtractOk<TResult>>, "queryFn"> &
     (keyof Parameters<typeof action>[0] extends undefined
-      ? Record<string, never>
+      ? Record<string, unknown>
       : { input: Parameters<typeof action>[0] }),
 ): UseQueryResult<ExtractOk<TResult>>;
 export function useServerActionQuery<
@@ -42,7 +42,7 @@ export function useServerActionQuery<
   action: (input: TInput) => TResult | Promise<TResult>,
   options: Omit<DefinedInitialDataOptions<ExtractOk<TResult>>, "queryFn"> &
     (keyof Parameters<typeof action>[0] extends undefined
-      ? Record<string, never>
+      ? Record<string, unknown>
       : { input: Parameters<typeof action>[0] }),
 ): DefinedUseQueryResult<ExtractOk<TResult>>;
 // eslint-disable-next-line
@@ -54,11 +54,11 @@ export function useServerActionQuery<
   options:
     | (Omit<DefinedInitialDataOptions<ExtractOk<TResult>>, "queryFn"> &
         (keyof Parameters<typeof action>[0] extends undefined
-          ? Record<string, never>
+          ? Record<string, unknown>
           : { input: Parameters<typeof action>[0] }))
     | (Omit<UndefinedInitialDataOptions<ExtractOk<TResult>>, "queryFn"> &
         (keyof Parameters<typeof action>[0] extends undefined
-          ? Record<string, never>
+          ? Record<string, unknown>
           : { input: Parameters<typeof action>[0] })),
 ):
   | DefinedUseQueryResult<ExtractOk<TResult>>
