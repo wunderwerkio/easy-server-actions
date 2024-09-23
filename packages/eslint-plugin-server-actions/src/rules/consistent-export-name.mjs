@@ -20,7 +20,7 @@ export default {
       ExportNamedDeclaration(node) {
         if (!isUseServer) return;
 
-        if (node.declaration.type === "VariableDeclaration") {
+        if (node.declaration?.type === "VariableDeclaration") {
           for (const declaration of node.declaration.declarations) {
             if (declaration.init.type === "Literal") {
               continue;
