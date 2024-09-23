@@ -1,73 +1,23 @@
 {
-  "name": "@wunderwerk/easy-server-actions",
-  "version": "1.0.0-alpha.1",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./client": {
-      "import": "./dist/client/index.js",
-      "types": "./dist/client/index.d.ts"
-    },
-    "./server": {
-      "import": "./dist/server/index.js",
-      "types": "./dist/server/index.d.ts"
-    }
-  },
-  "peerDependencies": {
-    "@tanstack/react-query": "^5.35.0",
-    "react": "^18.0.0 || ^19.0.0",
-    "zod": "^3.23.0"
-  },
+  "name": "root",
+  "version": "0.0.0",
+  "private": true,
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.6",
     "@changesets/git": "^3.0.0",
-    "@eslint/compat": "^1.1.0",
-    "@eslint/js": "^9.5.0",
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
-    "@tanstack/react-query": "^5.48.0",
-    "@types/eslint__js": "^8.42.3",
-    "@types/react": "^18.3.3",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^7.14.1",
-    "@wunderwerk/eslint-config": "^2.0.3",
-    "eslint": "^9.5.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-formatter-visualstudio": "^8.40.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^48.5.0",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "prettier": "^3.0.3",
-    "react": "^18.3.1",
-    "ts-node": "^10.9.1",
-    "tsup": "^8.1.0",
-    "turbo": "^2.0.5",
-    "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1",
-    "zod": "^3.23.8"
+    "prettier-config": "workspace:*",
+    "turbo": "^2.0.5"
   },
   "scripts": {
     "check-all": "turbo run build lint typecheck",
-    "build": "tsup",
-    "test": "NODE_NO_WARNINGS=1 ava",
-    "lint": "eslint src --max-warnings 0",
-    "typecheck": "tsc --project ./tsconfig.json",
-    "format:check": "prettier --check 'src/**/*.{ts,tsx}'",
-    "format:write": "prettier --write 'src/**/*.{ts,tsx}'",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "format:check": "prettier --check 'packages/*/**/*.{ts,tsx,mjs,js}'",
+    "format:write": "prettier --write 'packages/*/**/*.{ts,tsx,mjs,js}'",
     "version-packages": "turbo run build lint typecheck && changeset version && pnpm install --lockfile-only",
     "publish-packages": "turbo run build lint typecheck && changeset publish"
   },
-  "dependencies": {
-    "server-only": "^0.0.1"
-  },
-  "files": [
-    "README.md",
-    "LICENSE",
-    "dist"
-  ],
-  "packageManager": "pnpm@9.4.4"
+  "packageManager": "pnpm@9.11.0"
 }

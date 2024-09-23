@@ -52,16 +52,18 @@ export function useServerAction<TInput, TResult extends ServerActionResult>(
           const result = await action(input);
 
           if (result.ok) {
-            options.onSuccess?.(result.val as ExtractOk<TResult>);
+            await options.onSuccess?.(result.val as ExtractOk<TResult>);
             resolve(result.val as ExtractOk<TResult>);
           } else {
-            options.onError?.(result.val as ExtractErr<TResult>);
+            await options.onError?.(result.val as ExtractErr<TResult>);
+            // eslint-disable-next-line
             reject(result.val as ExtractErr<TResult>);
           }
         });
       });
     },
-    [startTransition, action, isPending, ...deps],
+    // eslint-disable-next-line
+    [startTransition, action, isPending, options, ...deps],
   );
 
   return [callback, isPending] as const;
