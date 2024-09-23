@@ -1,5 +1,15 @@
 # @wunderwerk/easy-server-actions
 
+## 1.0.0
+
+### Major Changes
+
+- 6e2a14a: Initial release
+
+### Patch Changes
+
+- f4fc918: Fix useServerActionQuery types
+
 ## 1.0.0-alpha.1
 
 ### Patch Changes
