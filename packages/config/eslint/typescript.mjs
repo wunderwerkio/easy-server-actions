@@ -1,48 +1,39 @@
-import eslint from "@eslint/js";
-import prettiereslint from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
 import jsdoceslint from "eslint-plugin-jsdoc";
 
-/**
- * The base eslint config for typescript.
- */
-export default [
-  eslint.configs.recommended,
-  jsdoceslint.configs["flat/recommended"],
-  prettiereslint,
+import base from "./base.mjs";
+
+export default tseslint.config(
+  ...base,
+  ...tseslint.configs.recommendedTypeChecked,
+  jsdoceslint.configs["flat/recommended-typescript"],
   {
+    files: ["**/*.ts", "**/*.tsx"],
     rules: {
-      "no-var": "warn",
-      "no-empty": "warn",
-      "no-unused-vars": [
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
         "warn",
         {
           varsIgnorePattern: "^_",
           argsIgnorePattern: "^_",
         },
       ],
-      "no-console": [
-        "warn",
+      "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/consistent-type-assertions": [
+        "error",
         {
-          allow: ["assert"],
+          assertionStyle: "as",
+          objectLiteralTypeAssertions: "never",
         },
       ],
-      "no-fallthrough": "warn",
-      "no-case-declarations": "error",
-      "no-self-assign": "warn",
-      "new-cap": "off",
-      "no-undefined": "off",
-      "no-global-assign": "error",
-      "prefer-const": "error",
-      "dot-notation": "error",
-      "no-useless-catch": "error",
-      "no-prototype-builtins": "off",
+      "jsdoc/require-returns": "off",
+      "jsdoc/require-param": "off",
       "jsdoc/require-description-complete-sentence": [
         "warn",
         { abbreviations: ["etc", "e.g.", "i.e."] },
       ],
       "jsdoc/require-hyphen-before-param-description": "warn",
       "jsdoc/no-blank-block-descriptions": "error",
-      "jsdoc/tag-lines": ["warn" | "warn", "never", { startLines: 1 }],
       "jsdoc/require-jsdoc": [
         "warn",
         {
@@ -68,4 +59,18 @@ export default [
       ],
     },
   },
-];
+  {
+    files: ["**/*.stories.tsx", "**/*.stories.ts"],
+    rules: {
+      "no-case-declarations": "off",
+      "no-console": "off",
+      "@typescript-eslint/ban-ts-comment": [
+        "error",
+        {
+          "ts-ignore": "allow-with-description",
+        },
+      ],
+    },
+  },
+);
+

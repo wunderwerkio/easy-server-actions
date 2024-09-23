@@ -2,7 +2,7 @@ import { fixupPluginRules } from "@eslint/compat";
 import reacteslint from "eslint-plugin-react";
 import reacthookseslint from "eslint-plugin-react-hooks";
 
-import base from "./base.mjs";
+import base from "./typescript.mjs";
 
 /**
  * Base typescript config + react.
