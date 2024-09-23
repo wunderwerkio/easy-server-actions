@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@changesets/cli": "^2.27.6",
-    "@changesets/git": "^3.0.0",
+    "@changesets/cli": "^2.27.8",
+    "@changesets/git": "^3.0.1",
     "prettier-config": "workspace:*",
-    "turbo": "^2.0.5"
+    "turbo": "^2.1.2"
   },
   "scripts": {
     "check-all": "turbo run build lint typecheck",
