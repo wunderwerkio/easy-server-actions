@@ -1,8 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+
     ww-node-overlays.url = "github:wunderwerkio/nix-node-packages-overlays";
+    ww-node-overlays.inputs.nixpkgs.follows = "nixpkgs";
+
     ww-utils.url = "github:wunderwerkio/nix-ww-utils";
+    ww-utils.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
