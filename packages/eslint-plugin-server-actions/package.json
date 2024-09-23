@@ -1,0 +1,24 @@
+{
+  "name": "@wunderwerk/eslint-plugin-server-actions",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.mjs"
+    }
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  },
+  "scripts": {
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "eslint-config": "workspace:*"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist"
+  ]
+}
