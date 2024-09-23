@@ -1,7 +1,8 @@
 {
+  "name": "root",
+  "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.6",
     "@changesets/git": "^3.0.0",
     "prettier-config": "workspace:*",
