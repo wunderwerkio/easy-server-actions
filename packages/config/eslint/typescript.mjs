@@ -1,5 +1,5 @@
-import tseslint from "typescript-eslint";
 import jsdoceslint from "eslint-plugin-jsdoc";
+import tseslint from "typescript-eslint";
 
 import base from "./base.mjs";
 
@@ -73,4 +73,3 @@ export default tseslint.config(
     },
   },
 );
-

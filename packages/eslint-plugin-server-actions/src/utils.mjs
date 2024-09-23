@@ -75,4 +75,3 @@ export const getFilename = (p) => posix.basename(p);
  */
 export const getFilenameWithoutExt = (f) =>
   FILENAME_WO_EXT_REGEXP.exec(f).at(0);
-

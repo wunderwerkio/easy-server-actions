@@ -2,7 +2,8 @@ export default {
   meta: {
     type: "problem",
     docs: {
-      description: "Enforce that server action files do not have default exports.",
+      description:
+        "Enforce that server action files do not have default exports.",
     },
     schema: [],
   },
