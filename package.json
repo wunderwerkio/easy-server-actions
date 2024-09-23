@@ -9,7 +9,7 @@
     "turbo": "^2.1.2"
   },
   "scripts": {
-    "check-all": "turbo run build lint typecheck",
+    "check-all": "turbo run build lint typecheck && pnpm format:check",
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
