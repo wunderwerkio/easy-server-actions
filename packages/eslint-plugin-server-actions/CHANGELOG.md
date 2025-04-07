@@ -1,5 +1,11 @@
 # @wunderwerk/eslint-plugin-server-actions
 
+## 1.1.0
+
+### Minor Changes
+
+- 2d2ca23: Allow type and interface exports in server action files
+
 ## 1.0.2
 
 ### Patch Changes
