@@ -1,3 +1,8 @@
+const ALLOWED_DECLARATION_TYPES = [
+  "TSTypeAliasDeclaration",
+  "TSInterfaceDeclaration",
+];
+
 export default {
   meta: {
     type: "problem",
@@ -18,8 +23,9 @@ export default {
       },
       ExportNamedDeclaration(node) {
         if (!isUseServer) return;
+        const declarationType = node.declaration?.type;
 
-        if (node.declaration?.type === "VariableDeclaration") {
+        if (declarationType === "VariableDeclaration") {
           for (const declaration of node.declaration.declarations) {
             if (declaration.init.type === "Literal") {
               continue;
@@ -37,7 +43,7 @@ export default {
               });
             }
           }
-        } else {
+        } else if (!ALLOWED_DECLARATION_TYPES.includes(declarationType)) {
           context.report({
             node: node?.declaration ?? node,
             message:
