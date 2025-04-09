@@ -1,5 +1,11 @@
 # @wunderwerk/easy-server-actions
 
+## 2.0.0
+
+### Major Changes
+
+- 894a807: BREAKING: Use JSON:API spec for error, support arrays of errors
+
 ## 1.0.0
 
 ### Major Changes
