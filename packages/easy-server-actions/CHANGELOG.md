@@ -1,5 +1,11 @@
 # @wunderwerk/easy-server-actions
 
+## 2.1.0
+
+### Minor Changes
+
+- c4c6046: In useServerAction hook's onError add the first error as first argument
+
 ## 2.0.2
 
 ### Patch Changes
