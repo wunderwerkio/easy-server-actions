@@ -1,6 +1,10 @@
 import { z, ZodSchema } from "zod";
 
-import { ServerActionErr, ServerActionResult } from "../results";
+import {
+  ServerActionErr,
+  ServerActionError,
+  ServerActionResult,
+} from "../results";
 
 type ValidationError = {
   readonly ok: false;
@@ -9,6 +13,8 @@ type ValidationError = {
     code: "validation_failed";
   };
 };
+
+type D = ServerActionResult;
 
 /**
  * Overload with schema.
@@ -71,9 +77,22 @@ export function serverAction<TReturn extends PromiseLike<ServerActionResult>>(
         validationResult.error.toString(),
       );
 
-      return ServerActionErr({
+      // Properly map zod errors to the ServerActionError format.
+      const errors = validationResult.error.errors.map((error) => ({
         code: "validation_failed",
-      });
+        title: "Validation failed",
+        detail: error.message,
+        source: {
+          pointer: error.path.join("."),
+        },
+        meta: {
+          reason: error.code,
+          expected: "expected" in error ? error.expected : undefined,
+          received: "received" in error ? error.received : undefined,
+        },
+      }));
+
+      return ServerActionErr(errors);
     }
 
     return callback?.(validationResult.data);
