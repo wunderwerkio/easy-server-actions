@@ -1,5 +1,11 @@
 # @wunderwerk/easy-server-actions
 
+## 2.0.1
+
+### Patch Changes
+
+- 07a9495: Make validation error JSON:API spec compliant
+
 ## 2.0.0
 
 ### Major Changes
