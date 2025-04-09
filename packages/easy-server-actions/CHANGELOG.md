@@ -1,5 +1,11 @@
 # @wunderwerk/easy-server-actions
 
+## 2.0.2
+
+### Patch Changes
+
+- 8e1010e: Fix validation error type
+
 ## 2.0.1
 
 ### Patch Changes
