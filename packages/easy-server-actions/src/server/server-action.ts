@@ -11,10 +11,18 @@ type ValidationError = {
   readonly err: true;
   readonly val: {
     code: "validation_failed";
-  };
+    title: string;
+    detail: string;
+    source: {
+      pointer: string;
+    };
+    meta: {
+      reason: string;
+      expected?: string;
+      received?: string;
+    };
+  }[];
 };
-
-type D = ServerActionResult;
 
 /**
  * Overload with schema.
