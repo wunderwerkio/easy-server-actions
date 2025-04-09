@@ -13,10 +13,22 @@ export type ServerActionPayload =
   | { [key: string | number]: ServerActionPayload };
 
 // The server action error.
-export interface ServerActionError {
-  code: string;
+export interface ServerActionError<TMeta = Record<string, unknown>> {
+  id?: string;
+  links?: {
+    about?: string;
+    type?: string;
+  };
+  status?: string;
+  code?: string;
   title?: string;
   detail?: string;
+  source?: {
+    pointer?: string;
+    parameter?: string;
+    header?: string;
+  };
+  meta?: TMeta;
 }
 
 // Defines a server action result.
@@ -42,11 +54,13 @@ export type ServerActionResultOk = ReturnType<typeof ServerActionOk>;
  *
  * @param err - The error.
  */
-export const ServerActionErr = <T extends ServerActionError>(err: T) => {
+export const ServerActionErr = <T extends ServerActionError>(err: T | T[]) => {
+  const val = Array.isArray(err) ? err : [err];
+
   return {
     ok: false,
     err: true,
-    val: err,
+    val,
   } as const;
 };
 
