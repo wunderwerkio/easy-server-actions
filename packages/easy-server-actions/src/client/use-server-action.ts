@@ -18,7 +18,10 @@ type ExtractErr<T> = T extends {
 
 type Options<TResult extends ServerActionResult> = {
   onSuccess?: (value: ExtractOk<TResult>) => void | Promise<void>;
-  onError?: (value: ExtractErr<TResult>) => void | Promise<void>;
+  onError?: (
+    firstError: ExtractErr<TResult>[number],
+    errors: ExtractErr<TResult>,
+  ) => void | Promise<void>;
 };
 
 /**
@@ -55,7 +58,10 @@ export function useServerAction<TInput, TResult extends ServerActionResult>(
             await options.onSuccess?.(result.val as ExtractOk<TResult>);
             resolve(result.val as ExtractOk<TResult>);
           } else {
-            await options.onError?.(result.val as ExtractErr<TResult>);
+            await options.onError?.(
+              result.val[0],
+              result.val as ExtractErr<TResult>,
+            );
             // eslint-disable-next-line
             reject(result.val as ExtractErr<TResult>);
           }
